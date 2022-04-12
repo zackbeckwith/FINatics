@@ -28,6 +28,7 @@ class User(db.Model, UserMixin):
 class Aquarium(db.Model):
     ___tablename__ = 'aquariums'
     id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     name = db.Column(db.String(10), default='Aquarium')
     fish = db.Column(db.String(200), nullable=False)
     plants = db.Column(db.String(200), nullable=False)
@@ -42,7 +43,7 @@ class Aquarium(db.Model):
         self.user_id = user_id
     
     def __repr__(self):
-        return f"Aquarium ID: {self.id} -- Name: {self.name}"
+        return f"Aquarium ID: {self.id} --- Date: {self.date} --- Name: {self.name}"
     
 #going to use this in our login view 
     def check_password(self, password):
