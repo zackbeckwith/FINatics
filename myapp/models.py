@@ -13,17 +13,19 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     aquariums = db.relationship('Aquarium', backref='owner', lazy=True)
-
     def __init__(self, email, username, password):
         self.email = email
         self.username = username
         self.password_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    def __repr__(self):
+        return f"Username {self.username}"
 
 class Aquarium(db.Model):
     ___tablename__ = 'aquariums'
@@ -44,11 +46,5 @@ class Aquarium(db.Model):
     
     def __repr__(self):
         return f"Aquarium ID: {self.id} --- Date: {self.date} --- Name: {self.name}"
-    
-#going to use this in our login view 
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-    
-    def __repr__(self):
-        return f"Username {self.username}"
+
 

@@ -57,4 +57,4 @@ app.register_blueprint(users)
 #Linking and registering aquariums views Blueprint
 
 from myapp.aquariums.views import aquariums
-app. register_blueprint(aquariums)
+app.register_blueprint(aquariums)

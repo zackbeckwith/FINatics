@@ -15,7 +15,6 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(email=form.email.data, username=form.username.data, password=form.password.data)
-
         db.session.add(user)
         db.session.commit()
         flash('Thanks for Registration!')
@@ -26,24 +25,16 @@ def register():
 # login
 @users.route('/login', methods=['GET', 'POST'])
 def login():
-
     form = LoginForm()
     if form.validate_on_submit():
-
         user = User.query.filter_by(email=form.email.data).first()
-
         if user.check_password(form.password.data) and user is not None:
-
             login_user(user)
             flash('Log in Success!')
-
             next = request.args.get('next')
-
             if next ==None or not next[0]=='/':
                 next = url_for('core.index')
-
             return redirect(next)
-
     return render_template('login.html',form=form)
 
 # logout
@@ -62,7 +53,7 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash('User account updated!!')
+        flash('User account updated!')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
         form.username.data = current_user.username
