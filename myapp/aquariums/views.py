@@ -27,3 +27,32 @@ def aquarium(aquarium_id):
 @aquariums.route('/<int:aquarium_id>/update',methods=['GET', 'POST'])
 @login_required
 def update(aquarium_id):
+  aquarium = Aquarium.query.get_or_404(aquarium_id)
+  if aquarium.owner != current_user:
+    abort(403)
+  form = AquariumForm()
+  if form.validate_on_submit():
+    aquarium.name = form.name.data
+    aquarium.type = form.type.data
+    aquarium.fish = form.fish.data
+    aquarium.plants = form.plants.data
+    db.session.commit()
+    flash('Aquarium Updated')
+    return redirect(url_for('aquariums.aquarium', aquarium_id=aquarium.id))
+  elif request.method == 'GET':
+    form.name.data = aquarium.name
+    form.type.data = aquarium.type
+    form.fish.data = aquarium.fish
+    form.plants.data = aquarium.plants
+  return render_template('create_aquarium.html', title='Updating...', form=form)
+
+@aquariums.route('/<int:aquarium_id>/delete',methods=['GET','POST'])
+@login_required
+def delete_aquarium(aquarium_id):
+  aquarium = Aquarium.query.get_or_404(aquarium_id)
+  if aquarium.owner != current_user:
+    abort(403)
+  db.session.delete(aquarium)
+  db.session.commit()
+  flash('Aquarium Deleted')
+  return redirect(url_for('core.index'))
