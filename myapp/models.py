@@ -31,10 +31,10 @@ class Aquarium(db.Model):
     ___tablename__ = 'aquariums'
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    name = db.Column(db.String(10), default='Aquarium')
-    fish = db.Column(db.String(200), nullable=False)
-    plants = db.Column(db.String(200), nullable=False)
-    type = db.Column(db.String(5), nullable=False)
+    name = db.Column(db.String(30), default='Aquarium')
+    fish = db.Column(db.String(250), nullable=False)
+    plants = db.Column(db.String(250), nullable=False)
+    type = db.Column(db.String(15), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self, name, fish, plants, type, user_id):
