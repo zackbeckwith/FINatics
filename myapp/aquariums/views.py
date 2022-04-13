@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, request, redirect, Blueprint, abort
 from flask_login import current_user, login_required
 from myapp import db
+from myapp import photos
 from myapp.models import Aquarium
 from myapp.aquariums.forms import AquariumForm
 
@@ -11,7 +12,8 @@ aquariums = Blueprint('aquariums', __name__)
 def create_aquarium():
   form = AquariumForm()
   if form.validate_on_submit():
-    aquarium = Aquarium(name = form.name.data, type=form.type.data, fish=form.fish.data, plants=form.plants.data, user_id=current_user.id)
+    filename = photos.save(form.image.data)
+    aquarium = Aquarium(name = form.name.data, type=form.type.data, fish=form.fish.data, plants=form.plants.data, user_id=current_user.id, image=filename)
     db.session.add(aquarium)
     db.session.commit()
     flash('Aquarium Created')

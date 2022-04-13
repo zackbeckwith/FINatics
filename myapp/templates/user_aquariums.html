@@ -8,7 +8,7 @@
         </div>
      {% for aquarium in aquariums.items %}
     <h2>
-        <a href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">{{aquarium.title}}</a>
+        <a href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">{{aquarium.name}}</a>
     </h2>
     Owned By: <a href="{{url_for('users.user_aquariums', username=aquarium.owner.username)}}">{{aquarium.owner.username}}</a>
 
@@ -16,9 +16,9 @@
         Started On: {{aquarium.date.strftime("%y-%m-%d")}}
     </p>
     <br>
-    <p>{{aquarium.type}}</p>
-    <p>{{aquarium.fish}}</p>
-    <p>{{aquarium.plants}}</p>
+    <p>Water Type: {{aquarium.type}}</p>
+    <p>Fish: {{aquarium.fish}}</p>
+    <p>Plants: {{aquarium.plants}}</p>
     <br>
     {% endfor %}
     </div>

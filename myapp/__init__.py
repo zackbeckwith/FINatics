@@ -1,16 +1,17 @@
 # myapp/__init__.py 
-
 from flask import Flask 
 from flask_sqlalchemy import SQLAlchemy
 import os
 from os import environ, path 
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_uploads import configure_uploads, UploadSet, IMAGES
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd()
 
 ############################
 ###### DATABASE SETUP ######
@@ -53,8 +54,14 @@ app.register_blueprint(error_pages)
 from myapp.users.views import users
 app.register_blueprint(users)
 
+#Configure UploadSet for images
+photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
 
 #Linking and registering aquariums views Blueprint
 
 from myapp.aquariums.views import aquariums
 app.register_blueprint(aquariums)
+
+
+

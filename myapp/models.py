@@ -32,13 +32,15 @@ class Aquarium(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     name = db.Column(db.String(30), default='Aquarium')
+    image = db.Column(db.String(36))
     fish = db.Column(db.String(250), nullable=False)
     plants = db.Column(db.String(250), nullable=False)
     type = db.Column(db.String(15), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, name, fish, plants, type, user_id):
+    def __init__(self, name, fish, plants, type, user_id, image=None):
         self.name = name
+        self.image = image
         self.fish = fish
         self.plants = plants
         self.type = type
