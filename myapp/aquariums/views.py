@@ -12,8 +12,8 @@ aquariums = Blueprint('aquariums', __name__)
 def create_aquarium():
   form = AquariumForm()
   if form.validate_on_submit():
-    filename = photos.save(form.image.data)
-    aquarium = Aquarium(name = form.name.data, type=form.type.data, fish=form.fish.data, plants=form.plants.data, user_id=current_user.id, image=filename)
+    image_file = photos.save(form.image.data)
+    aquarium = Aquarium(name = form.name.data, type=form.type.data, fish=form.fish.data, plants=form.plants.data, user_id=current_user.id, image=image_file)
     db.session.add(aquarium)
     db.session.commit()
     flash('Aquarium Created')
@@ -24,7 +24,7 @@ def create_aquarium():
 @aquariums.route('/<int:aquarium_id>')
 def aquarium(aquarium_id):
   aquarium = Aquarium.query.get_or_404(aquarium_id)
-  return render_template('aquarium.html', name=aquarium.name, date=aquarium.date, aquarium=aquarium)
+  return render_template('aquarium.html', name=aquarium.name, date=aquarium.date, aquarium=aquarium, image=aquarium.image)
 
 @aquariums.route('/<int:aquarium_id>/update',methods=['GET', 'POST'])
 @login_required

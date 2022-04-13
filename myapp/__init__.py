@@ -11,7 +11,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['UPLOADED_PHOTOS_DEST'] = os.getcwd()
+app.config['UPLOADED_PHOTOS_DEST'] = 'myapp/static'
 
 ############################
 ###### DATABASE SETUP ######
