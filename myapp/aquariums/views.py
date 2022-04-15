@@ -18,7 +18,7 @@ def create_aquarium():
     db.session.commit()
     flash('Aquarium Created')
     print('Aquarium was created')
-    return redirect(url_for('core.index'))
+    return redirect(url_for('core.home'))
   return render_template('create_aquarium.html', form=form)
 
 @aquariums.route('/<int:aquarium_id>')
