@@ -57,4 +57,4 @@ def delete_aquarium(aquarium_id):
   db.session.delete(aquarium)
   db.session.commit()
   flash('Aquarium Deleted')
-  return redirect(url_for('core.index'))
+  return redirect(url_for('core.home'))
