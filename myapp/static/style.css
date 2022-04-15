@@ -193,8 +193,8 @@ a:hover, .btn:hover{
 
 /* Home */
 .page-link {
-  background-color: rgba(4, 0, 79, 0.763);
-  border-color: rgba(4, 0, 79, 0.763);
+  background-color: rgba(4, 0, 79, 0.763)!important;
+  border-color: rgba(4, 0, 79, 0.763)!important;
 }
 
 /* User Profile */
