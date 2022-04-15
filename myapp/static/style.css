@@ -10,6 +10,7 @@ body{
 }
 
 a {
+  color: white!important;
   text-decoration: none!important;
 }
 
@@ -18,6 +19,7 @@ a:hover{
 }
 
 /* navbar */
+
 .nav {
   background-color: rgba(4, 0, 79, 0.763);
   height: 3rem;
@@ -67,7 +69,30 @@ a:hover{
   color: #b89e09;
 }
 
+/* about page */
+
+.about {
+  height: 275px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 50px auto;
+  background-color: rgba(4, 0, 79, 0.763);
+  color: white;
+  padding: 20px;
+  border-radius: 10%;
+}
+
+.betta {
+  margin: 0 auto;
+  padding-top: 25px;
+  height: 50vh;
+  width: 50vh;
+}
+
 @media only screen and (max-width: 768px) {
+  /* nav */
   .nav {
     background-color: rgba(4, 0, 79, 0.763);
     height: 3rem;
@@ -77,6 +102,7 @@ a:hover{
     padding-top: 5px;
   }
   
+  /* welcome */
   .welcome {
     flex-direction: column;
     justify-content: center;
@@ -86,5 +112,21 @@ a:hover{
   .welcome_logo {
     height: 50%;
     width: 75%;
+  }
+
+  /* about */
+
+  .about {
+    height: 245px;
+    width: 280px;
+    font-size: 75%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px;
+  }
+  .betta {
+    height: 30vh;
+    width: 30vh;
   }
 }

@@ -11,9 +11,9 @@ def index():
     aquariums = Aquarium.query.order_by(Aquarium.date.desc()).paginate(page=page, per_page=5)
     return render_template('index.html', aquariums=aquariums)
 
-@core.route('/info')
-def info():
-    return render_template('info.html')
+@core.route('/about')
+def about():
+    return render_template('about.html')
 
 @core.route('/home')
 def home():
