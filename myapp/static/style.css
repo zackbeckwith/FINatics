@@ -200,6 +200,34 @@ a:hover, .btn:hover{
   text-shadow: 2px 2px #b89e09;
 }
 
+/* Aquarium Info */
+.aquarium-info {
+  border-radius: 10%;
+  width: 600px;
+  height: 650px;
+  color: white;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:rgba(4, 0, 79, 0.763);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.aquarium-pic {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+}
+
+.update-aquarium{
+  display: flex;
+  margin: 0 25px 25px 0;
+  background-color: #b89e09;
+  padding: 25px;
+  border-radius: 15%;
+}
+
 @media only screen and (max-width: 768px) {
   /* nav */
   .nav {
