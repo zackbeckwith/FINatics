@@ -15,3 +15,8 @@ def index():
 def info():
     return render_template('info.html')
 
+@core.route('/home')
+def home():
+    page = request.args.get('page', 1, type=int)
+    aquariums = Aquarium.query.order_by(Aquarium.date.desc()).paginate(page=page, per_page=5)
+    return render_template('home.html', aquariums=aquariums)

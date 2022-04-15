@@ -1,36 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="jumbotron">
-        <h1>FINatics</h1>
+    <div class="welcome">
+        <img class='welcome_logo'src="{{url_for('static', filename='finatics.png')}}" alt="FINatics Logo">
+        <div class="'wecome_text">
+            <h1 class="sitename">FINatics:</h1>
+            <h2>The premier app for sofishticated aquarists</h2>
+            <button type="button" class="btn btn-primary"><a class="welcome_button_text" href="{{url_for('users.login')}}">Log In</a></button>
+            <button type="button" class="welcome_button btn btn-primary"><a class="welcome_button_text" href="{{url_for('users.register')}}">Register</a></button>
+        </div>
     </div>
-    <div class="container">
-        {% for aquarium in aquariums.items %}
-            <div class="card">
-                <div class="car-boy">
-                    <h2>
-                        <a class="card-title" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">{{aquarium.name}}</a>
-                        <a href="{{url_for('users.user_aquariums', username=aquarium.owner.username)}}">Created by: {{aquarium.owner.username}}</a>
-                    </h2>
-                    <p>Created on: {{aquarium.date.strftime('%Y - %m - %d')}}</p>
-                    <a class="btn btn-primary" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">See Aquarium</a>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-
-    <nav aria-label="Page Navigation example">
-        <ul class="pagination justify-content-center">
-            {% for page_num in aquariums.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-                {% if aquariums.page == page_num %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="{{url_for('core.index', page=page_num)}}">{{ page_num }}</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="{{url_for('core.index', page=page_num)}}">{{ page_num }}</a>
-                </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </nav>
 {% endblock %}
