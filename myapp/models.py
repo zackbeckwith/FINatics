@@ -30,7 +30,7 @@ class Aquarium(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     name = db.Column(db.String(30), default='Aquarium')
-    image = db.Column(db.String(36))
+    image = db.Column(db.String(100))
     fish = db.Column(db.String(250), nullable=False)
     plants = db.Column(db.String(250), nullable=False)
     type = db.Column(db.String(15), nullable=False)
