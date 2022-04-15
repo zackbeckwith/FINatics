@@ -171,6 +171,7 @@ a:hover, .btn:hover{
   font-size: 2rem;
   color: #b89e09!important;
   text-shadow: 0.5px 0.5px rgba(4, 0, 79, 0.763);
+  text-align: center;
 }
 
 .card-owner {
