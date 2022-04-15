@@ -191,6 +191,12 @@ a:hover, .btn:hover{
   text-shadow: 0.5px 0.5px rgba(4, 0, 79, 0.763);
 }
 
+/* Home */
+.page-link {
+  background-color: rgba(4, 0, 79, 0.763);
+  border-color: rgba(4, 0, 79, 0.763);
+}
+
 /* User Profile */
 
 .profile-header {

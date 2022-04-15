@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h2 class="profile-header">Welcome to Zack's Aquariums!</h2>
-<nav aria-label="page navigation">
+<nav aria-label="page-navigation">
     <ul class="pagination justify-content-center">
 
         {% for page_num in aquariums.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
