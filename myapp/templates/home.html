@@ -1,18 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="jumbotron">
-        <h1>FINatics</h1>
-    </div>
     <div class="container">
         {% for aquarium in aquariums.items %}
-            <div class="card">
-                <div class="car-boy">
+            <div class="card bg-primary">
+              <img class="card-img-top" src="{{url_for('static', filename=aquarium.image)}}" alt="Aquarium Image">
+                <div class="card-body">
                     <h2>
-                        <a class="card-title" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">{{aquarium.name}}</a>
-                        <a href="{{url_for('users.user_aquariums', username=aquarium.owner.username)}}">Created by: {{aquarium.owner.username}}</a>
+                        <a class="card-title" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">
+                          {{aquarium.name}}
+                        </a>
                     </h2>
-                    <p>Created on: {{aquarium.date.strftime('%Y - %m - %d')}}</p>
-                    <a class="btn btn-primary" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">See Aquarium</a>
+                    <h3>                        
+                      <a class="card-owner" href="{{url_for('users.user_aquariums', username=aquarium.owner.username)}}">
+                      {{aquarium.owner.username}}'s Aquarium
+                      </a>
+                    </h3>
+                    <p class="card-creation-date">
+                      Created on: {{aquarium.date.strftime('%Y - %m - %d')}}
+                    </p>
+                    <a class="card-button btn btn-warning" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">
+                      See Aquarium
+                    </a>
                 </div>
             </div>
         {% endfor %}

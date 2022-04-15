@@ -1,27 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
+<h2 class="profile-header">Welcome to Zack's Aquariums!</h2>
+<div class="profile">
     <div class="container">
-        <div class="jumbotron">
-            <div align="center">
-                <h1>Welcome to the page for {{user.username}}</h1>
+        {% for aquarium in aquariums.items %}
+            <div class="card bg-primary">
+            <img class="card-img-top" src="{{url_for('static', filename=aquarium.image)}}" alt="Aquarium Image">
+                <div class="card-body">
+                    <h2>
+                        <a class="card-title" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">
+                        {{aquarium.name}}
+                        </a>
+                    </h2>
+                    <h3>                        
+                    <a class="card-owner" href="{{url_for('users.user_aquariums', username=aquarium.owner.username)}}">
+                    {{aquarium.owner.username}}'s Aquarium
+                    </a>
+                    </h3>
+                    <p class="card-creation-date">
+                    Created on: {{aquarium.date.strftime('%Y - %m - %d')}}
+                    </p>
+                    <a class="card-button btn btn-warning" href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">
+                    See Aquarium
+                    </a>
+                </div>
             </div>
-        </div>
-     {% for aquarium in aquariums.items %}
-    <h2>
-        <a href="{{url_for('aquariums.aquarium', aquarium_id=aquarium.id)}}">{{aquarium.name}}</a>
-    </h2>
-    Owned By: <a href="{{url_for('users.user_aquariums', username=aquarium.owner.username)}}">{{aquarium.owner.username}}</a>
-
-    <p class="text-muted">
-        Started On: {{aquarium.date.strftime("%y-%m-%d")}}
-    </p>
-    <br>
-    <p>Water Type: {{aquarium.type}}</p>
-    <p>Fish: {{aquarium.fish}}</p>
-    <p>Plants: {{aquarium.plants}}</p>
-    <br>
-    {% endfor %}
+        {% endfor %}
     </div>
+</div>
 
     <nav aria-label="Page Navigation example">
         <ul class="pagination justify-content-center">

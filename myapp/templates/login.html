@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="loginregister">
-    <form class="loginregister_form" method="POST">
+<div class="form-container">
+    <form method="POST">
         <h1>Log In</h1>
         {{form.hidden_tag()}}
-        <div class="loginregister_form-label">
+        <div class="form_form-label">
             {{form.email.label}}
         </div>
-        <div class="loginregister_form-input">
+        <div class="form_form-input">
             {{form.email}}<br>
         </div>
-        <div class="loginregister_form-label">
+        <div class="form_form-label">
             {{form.password.label}}
         </div>
-        <div class="loginregister_form-input">
+        <div class="form_form-input">
             {{form.password}}<br>
         </div>
-        <div class="loginregister_button">
-        {{form.submit(class="loginregister_button btn btn-primary")}}
+        <div class="form-button">
+        {{form.submit(class="form-button btn btn-primary")}}
         </div>
     </form>
 </div>

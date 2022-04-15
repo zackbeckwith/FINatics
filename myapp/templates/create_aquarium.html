@@ -1,32 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
-      <form class="form-group" method="POST" enctype = multipart/form-data>
-          {{form.hidden_tag()}}
-
-          <div class="form-group">
-              {{form.name.label(class="form-control-label")}}
-              {{form.name(class="form-control form-control-lg")}}
-          </div>
-          <div class="form-group">
-            {{form.image.label(class="form-control-label")}}
-            <input type="file" name="image">
-          </div>
-          <div class="form-group">
-            {{form.type.label(class="form-control-label")}}
-            {{form.type(class="form-control form-control-lg")}}
-          </div>
-          <div class="form-group">
-            {{form.fish.label(class="form-control-label")}}
-            {{form.fish(class="form-control form-control-lg")}}
-          </div>
-          <div class="form-group">
-            {{form.plants.label(class="form-control-label")}}
-            {{form.plants(class="form-control form-control-lg")}}
-          </div>
-        <div class="form-group">
-            {{form.submit(class="btn btn-outline-info")}}
-        </div>
-      </form>
+<div class="form-container create-form">
+  <h1>Share An Aquarium</h1>
+  <form method="POST" enctype = multipart/form-data>
+      {{form.hidden_tag()}}
+    <div class="form-label">
+          {{form.name.label}}
     </div>
+      <div class="form-input">
+          {{form.name}}
+      </div>
+    <div class="form-label">
+        {{form.image.label}}
+    </div>
+    <div class="form-label">
+      <input type="file" name="image">
+    </div>
+    <div class="form-label">
+      {{form.type.label}}
+    </div>
+    <div class="form-input">
+      {{form.type}}
+    </div>
+    <div class="form-label">
+      {{form.fish.label}}
+    </div>
+    <div class="form-input">
+      {{form.fish}}
+    </div>
+    <div class="form-label">
+      {{form.plants.label}}
+    </div>
+    <div class="form-input">
+      {{form.plants}}
+    </div>
+    <div class="create-form-button form-button">
+        {{form.submit(class="form-button btn btn-primary")}}
+    </div>
+  </form>
+</div>
 {% endblock %}
