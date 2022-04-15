@@ -91,6 +91,35 @@ a:hover{
   width: 50vh;
 }
 
+/* login/register page */
+
+.loginregister{
+  color: white;
+  background-color: rgba(4, 0, 79, 0.763);
+  width: fit-content;
+  height: fit-content;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10vh auto;
+  text-align: center;
+  padding: 30px;
+}
+.loginregister_form-label{
+  display:grid;
+  grid-template-columns: max-content max-content;
+  grid-gap:5px;
+}
+.loginregister_form-input{
+  display: inline-block;
+  grid-gap:5px;
+}
+
+.loginregister_button {
+  padding-top: 25px;
+  color: whitesmoke;
+}
+
 @media only screen and (max-width: 768px) {
   /* nav */
   .nav {
